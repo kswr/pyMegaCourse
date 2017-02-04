@@ -1,5 +1,3 @@
-import math
-
 #function that converts Celsius degrees to Fahrenheit
 def celToFahr(cel):
     fahr=cel*1.8+32
