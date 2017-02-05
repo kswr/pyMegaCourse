@@ -39,5 +39,5 @@ def genator():
     name = letter1 + letter2 + letter3
     return (name)
 
-
-print (genator())
+for i in range(20):
+    print (genator())
