@@ -101,3 +101,55 @@ Variable naming rules
 * can contain letters, underscore and/or numbers
 * can start with letter or underscore
 * can't start with number
+
+`input()` is a function collecting input from the users as string
+
+```
+greeting = input("Write a greeting: ")
+print(greeting)
+```
+`int()` and `str()` are converting functions, `int()` converts floats to integers rounding them to the floor
+
+Will collect and print out input from the user
+
+### Lecture 12 - Numbers
+
+You can store numbers in variables and perform mathematical operations on them using operators
+
+`type()` is a function returning class of given object e.g.
+
+```
+print(type(2))
+```
+```
+<class 'int'>
+```
+### Lecture 13 - Numbers and operators
+
+Order of operations in Python is _PEMDAS_ (M&D and A&S are pairs on the same level, operations of the same level are being executed in left to right order)
+
+Number solution of every mathematical equation in Python 3.6 is float
+
+### Lecture 14 - Strings
+
+Strings have methods associated with them, e.g.
+
+`string.replace(a,b,n)` replaces a char with b char in given string n of times
+
+To display all methods available for class, type `dir(class)` in Python shell
+
+To get help about given method, type 'help(object.method)' in Python shell
+
+### Lecture 15 - String Indexing and Splitting
+
+Each string char has index starting from 0, and reverse index starting from -1
+
+To access substring of given string use `c[x,y]` where x is beginning index, and y is ending index excluded. In case when y<=x ^ |x+y|<n where n is length of given string, indexing returns empty substring.
+
+Shortcuts for indexing:
+
+`string[:3]` - everything up to index 2. character
+
+`string[3:]` - everything since 3. character to the end of the string
+
+### Lecture 16 - Lists
