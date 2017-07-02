@@ -609,6 +609,10 @@ To install package (use it outside Python interactive shell)
 ```
 pip install packagename
 ```
+To install local package (e.g. precompiled `*.whl` file)
+```
+pip install /directory/to/file.whl
+```
 
 __PyPI__ - Python Package Index; most of packages can be found here
 
@@ -763,3 +767,103 @@ Program generates 10 random 3-char strings, user type of characters in strings a
 My version of code in file `Application_1_my_version.py`
 
 ### Lecture 60 - Building Version 3
+
+Author adds loop to his version of code
+
+## Section 8 - Data Analysis with Pandas
+
+### Lecture 61 - What is Pandas?
+
+`pandas` is Python library providing data structures and data analysis tools (recommended library for visualizing data is `bokeh`) based on `numpy` library
+
+It can be used for
+* web data scrapping
+* loading data
+* analyzing data
+
+To install (from OS command shell)
+```
+pip install pandas
+```
+
+### Lecture 62 - Getting Started with Pandas
+
+__IPython__ - command shell for interactive computing in multiple programming languages, originally developed for the Python programming language, that offers introspection, rich media, shell syntax, tab completion, and history. IPython provides the following features
+* Interactive shells (terminal and Qt-based).
+* A browser-based notebook with support for code, text, mathematical * expressions, inline plots and other media.
+* Support for interactive data visualization and use of GUI toolkits.
+* Flexible, embeddable interpreters to load into one's own projects.
+* Tools for parallel computing.
+
+In the following lectures we will use __Jupyter Notebook__
+
+To create `pandsa.DataFrame` object
+```
+df1 = pandas.DataFrame([[2,4,6],[10,20,30]],columns=["Price","Age","Values"],index=["First","Second"])
+```
+output
+```
+        Price  Age  Values
+First       2    4       6
+Second     10   20      30
+```
+
+Example 2
+```
+df2 = pandas.DataFrame([{"Name":"John","Surname":"Johns"},{"Name":"Jack"}])
+```
+
+Output
+```
+   Name Surname
+0  John   Johns
+1  Jack     NaN
+```
+
+Mean
+```
+df1.mean().mean() # mean for whole dataframe
+df1.Price.mean # mean for one column
+```
+### Lecture 63 - Getting Started with Jupyter notebook
+
+Jupyter is tool for
+* working with data analysis
+* testing code
+* testing visualization code
+* web scrapping (using e.g. BeautifullSoup )
+* other
+
+Jupyter can be installed through `pip`
+
+Jupyter has 2 modes
+* insert mode
+* command mode (command similar to vim commands)
+
+Keyboard shortcuts in Jupyter are available through `Help` -> `Keyboard shortcuts`
+
+### Lecture 64 - Loading Data in Python from CSV, Excel, TXT and JSON Files
+
+`jupyter`
+
+### Lecture 65 - Indexing and Slicing Dataframes
+
+`jupyter`
+
+### Lecture 66 - Dropping Dataframe Columns and Rows
+
+`jupyter`
+
+### Lecture 67 - Updating and Adding new Columns and Rows
+
+`jupyter`
+
+### Lecture 68 - Example: Geocoding Addresses with Pandas and Geopy
+
+`jupyter`
+
+## Section 9 - numpy
+
+### Lecture 69 - What is Numpy?
+
+`jupyter`
