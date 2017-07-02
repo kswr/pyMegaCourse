@@ -1,4 +1,4 @@
-# Python Mega course
+# [Python Mega course](https://www.udemy.com/the-python-mega-course/learn/v4/overview)
 
 ## Section 1 - Getting Started
 
@@ -353,6 +353,8 @@ def c_to_f(c):
         return f
 print(c_to_f(-273.4))
 ```
+## Section 4 - Loops and User input
+
 ### Lecture 34 - Loops
 
 Loop is a way to execute a statement number of times
@@ -372,6 +374,17 @@ To print all elements of an array:
 for item in array:
   print(item)
 ```
+
+For loop wrapped in square brackets
+```
+list_copy = [i for i in list]
+```
+Copies list `list` elements to `list_copy` list object
+
+```
+content=[i.rstrip("\n") for i in content]
+```
+Removes new line symbol from all elements of `content` list object
 
 ### Quiz 2 | 4 Questions
 
@@ -466,3 +479,287 @@ for t in temperatures:
 ## Section 5 - File Handling
 
 ### Lecture 41 - Introduction to File Handling
+
+Python can read content of the files, this section will cover this topic
+
+### Lecture 42 - Opening and Reading a File
+
+`input`
+
+To open a file use `open()` method, which passes file contents to file wrapper variable
+```
+file_in_python=open("your_file.txt",'mode')
+```
+The most important modes of `open()` method are
+* `r` - read - reads the file
+* `w` - write - overwrites the file
+* `a` - append - appends to the file
+
+`open()` method creates object of `_io.TextIOWrapper` class (file object)
+
+To read content of the file use `file.read()` method and store it in a variable
+```
+content=file_in_python.read()
+```
+
+Or `file.readlines()` to store content in a list
+```
+contentlist=file_in_python.readlist()
+```
+
+__Pointer__ - when Python opens the file, pointer is placed at it's beggining. Reading operation moves pointer over following elements of the file to it's end. To perform new operations on file's contents, pointer has to be moved to desired position using `.seek()` method.
+
+To move pointer to beggining of the file
+```
+file_in_python.seek(0)
+```
+
+To remove given characters from string, use `str.rstrip()` method
+```
+S.rstrip([chars]) -> str
+```
+Return a copy of the string S with trailing whitespace removed.
+If chars is given and not None, remove characters in chars instead.
+
+If file is modified and not closed in Python, the changes are not written to this file.
+Always apply `file_in_python.close()` method.
+
+### Lecture 43 - Opening and Writing Text to a Text File
+
+`input`
+
+To create a file, use `open()` method with `w` parameter
+```
+file=open("Non_existing_yet_file.txt","w")
+```
+
+To write to a file use `write()` method
+```
+file.write("String of content")
+```
+
+To write a line and go to the next one use new line symbol
+```
+file.write("Line 1 content\n")
+```
+Remember to close the file with `file.close()` method
+
+To concatenate strings use `+` operator
+
+### Lecture 44 - Appending to a File
+
+`input`
+
+Open file with argument `a` - append
+```
+file=open("filename",'a')
+```
+### Lecture 45 - The Rest of File Handling methods
+
+* `r+` - opens file for both reading and writing (places pointer at the beginning of the file)
+* `w+` - opens file for both writing and reading (overwrites existing file, which implies placing pointer at the beginning of the file)
+* `a+` - opens file for both appending and reading (places pointer at the end of the file)
+
+### Lecture 46 - The "with" Statement
+
+`input`
+
+* helps you writing clean code when working with files
+* makes sure file is closed after performing operations on it
+
+Example:
+```
+with open("File.txt",'a+') as file:
+  # move pointer to the beggining of the file
+  file.seek(0)
+  # global variable
+  content=file.read()
+  # new line
+  file.write("\nLine21")
+```
+
+## Section 6 - More Functionalities
+
+### Lecture 49 - Introduction
+
+This section covers
+* external libraries
+* dates
+* commenting
+* documenting
+* other
+
+### Lecture 50 - Modules, Libraries and Packages
+
+Python is installed by default with built-in functions, which load into memory with Python
+
+There are also additional libraries and modules which can be loaded using keyword `import()`
+
+__Module__ - Python file with custom functions
+
+To check path of module use `module.__file__` method
+
+__Library__ - Collection of modules
+
+__Packages__ - 3rd party Libraries and Modules
+
+__pip__ - Pip Installs Packages; package management system used to install and manage software packages written in Python
+
+To install package (use it outside Python interactive shell)
+```
+pip install packagename
+```
+
+__PyPI__ - Python Package Index; most of packages can be found here
+
+### Lecture 51 - Commenting and Documenting your code
+
+`code`
+
+To type one-line comment
+```
+# one-line comment
+```
+There are no multiline comments in Python
+
+Docstrings - to access docstring use `package.__doc__` method
+
+To create docstring
+```
+r"""
+Content of the docstring, e.g. "This script creates an empty file"
+"""
+```
+`r` before docstring escapes special symbols in docstring
+
+### Lecture 52 - Dates and Times
+
+`code`
+
+Most important built-in modules
+* `datetime`
+* `date`
+
+#### `datetime`
+
+Get current time in 24h system (datetime.datetime object) depending on current computer time
+```
+datetime.datetime.now()
+
+# moudule.class.method
+```
+`datetime` converts to readable string
+
+
+To get difference between given time and current moment
+```
+yesterday=datetime.datetime(2017,6,30,11,0,0,0)
+now=datetime.datetime.now()
+diff=now-yesterday
+```
+Variable `diff` stores now `timedelta` object of `datetime` instance, which is an array storing `(day, seconds, microseconds)`
+
+`timedelta` class most commonly used methods
+* `.days` - returns total days from delta
+* `.total_seconds` - returns total seconds from delta
+
+`strftime()` method of datetime.datetime instance, which allows user to style string
+
+Example, to get current year
+```
+datetime.datetime.now().strftime("%Y")
+```
+Output
+```
+'2017'
+```
+
+To add period of time to `datetime.datetime` instance object, use `datetime.delta` class object
+```
+now_in_two_days=datetime.datetime.now()+datetime.delta(days=2)
+```
+
+`time` module - good for managing time in operations performed by Python
+
+Example
+```
+# this loop will append one element of datetime.datetime instance to lst list every second
+
+lst=[]
+for i in range(5):
+  lst.append(datetime.datetime.now())
+  time.sleep(1)
+```
+
+### Lecture 53 to 55 - Coding Exercise 6
+
+`code` `input`
+
+Please download the ZIP file in the Resources and unzip it in a folder.
+
+Then create a script that merges the three text files into a new text file containing the text of all three files. The filename of the merged text file should contain the current timestamp down to the millisecond level. E.g. "2016-06-01-13-57-39-170965.txt".
+
+My solution
+```
+import glob2
+import datetime
+
+input=glob2.glob("..\\input\\Lecture_53_data\\*")
+
+output="..\\output\\Lecture_53_output_"+datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S-%f")+".txt"
+
+# replace opening and closing operations to generate less O
+
+for i in input:
+    with open(i, 'r') as file:
+        with open(output, 'a') as file_2:
+            file_2.write(file.read()+"\n")
+```
+
+Course solution
+```
+import glob2
+import datetime
+
+filenames=glob2.glob("*.txt")
+
+with open(datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S-%f")+".txt", 'w') as file:
+    for filename in filenames:
+        with open(filename,"r") as f:
+            file.write(f.read()+"\n")
+```
+
+## Section 7 - Application 1: Building a Text Generator
+
+### Lecture 56 - Introduction
+
+Application built in this section is simple text generator, it requires knowledge of the following concepts:
+* Variables
+* Functions
+* Conditionals
+* User input
+* For Loops
+
+### Lecture 57 - Demonstration of the Text Generator Application
+
+`code`
+
+Program generates 10 random 3-char strings, user type of characters in strings as vowels or consonants
+
+### Lecture 58 - Building Version 1
+
+`code`
+
+`string` module contains methods for operating on strings
+
+`string.ascii_lowercase` method contains lowercase ascii alphabet
+
+`random.choice` chooses random element from non-empty sequence
+
+### Lecture 59 - Building Version 2
+
+`code`
+
+My version of code in file `Application_1_my_version.py`
+
+### Lecture 60 - Building Version 3
