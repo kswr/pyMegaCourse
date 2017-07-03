@@ -969,3 +969,44 @@ for lt, ln, el in zip(lat, lon, elev):
 ```
 
 ### Lecture 80 - Color-Based Point Markers
+
+`code`
+
+Use function to define `color` parameter based on value of value assigned to it
+
+### Lecture 81 and 82 - Coding Exercise: Adding and Styling Circle Markers
+
+`code`
+
+### Lecture 83 - Solution of the Coding Exercise: Adding and Styling Circle Markers
+
+Use `folium.CircleMarker` map feature
+```
+for lt, ln, el in zip(lat, lon, elev):
+    fg.add_child(folium.CircleMarker(location=[lt, ln], radius = 6, popup=str(el)+ " m", fill_color=color_producer(el), color = 'grey', fill_opacity=0.7))
+
+```
+
+### Lecture 84 - Using GeoJson data
+
+GIS systems feature
+* polygons
+* points
+* lines
+
+Adding polygon layers (countries with colors representing population) via `folium.GeoJson` method
+
+`GeoJson` is special instance of `JSON` file
+
+### Lecture 85 - Adding a GeoJson Polygon Layer
+
+`code`
+
+Use `folium.GeoJson`
+```
+fg.add_child(folium.GeoJson(data=(open('../input/Lecture_84_data/world.json', 'r', encoding='utf-8-sig'))))
+```
+
+### Lecture 86 - Color-Based Polygon Features
+
+`code`
