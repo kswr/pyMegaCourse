@@ -867,3 +867,105 @@ Keyboard shortcuts in Jupyter are available through `Help` -> `Keyboard shortcut
 ### Lecture 69 - What is Numpy?
 
 `jupyter`
+
+### Lecture 70 -  Installing OpenCV (cv2)
+
+`jupyter`
+
+### Lecture 71 - Images to Numpy and Vice-versa
+
+`jupyter`
+
+### Lecture 72 - Indexing, Slicing, and Iterating
+
+`jupyter`
+
+### Lecture 73 - Stacking and Splitting
+
+`jupyter`
+
+## Section 10 - Application 2: Creating Webmaps with Python and Folium
+
+### Lecture 74 - Demonstration of the Web Mapping Application
+
+Web Map
+* can be displayed in web browser
+* has layers
+* built with Python and `folium` library
+
+### Lecture 75 - Creating the Open Street Map (OSM) Basemap
+
+`code`
+
+#### folium
+
+The most important instance of this library is object of `map` class
+```
+map = folium.Map
+```
+Map created in `folium` is automatically translated to JS, CSS and HTML, which can be read by browser
+
+Create map object centered on Warsaw
+```
+map = folium.Map(location=[52.250265,21.017909])
+```
+
+### Lecture 76 - Adding a Point Marker Feature to the Map
+
+`code`
+
+Things that can be modified when creating a map object in `folium`
+* location
+* width
+* height
+* tiles - it can be one of default, custom or 'None' for map without tiles
+* other
+
+To add elements to map create them as `child` of map object
+
+Markers are simple `leaflet` (JS library) objects
+```
+map.add_child(folium.Marker(location=[52.250265,21.017909], popup="Hi I am a Marker", icon=folium.Icon(color='green')))
+```
+
+Layers and objects added to the folium map should be stored and grouped in feature groups
+```
+fg = folium.FeatureGroup(name="My Map")
+fg.add_child(...)
+map.add_child(fg)
+```
+
+### Lecture 77 - Adding Multiple Markers to the Map
+
+`code`
+
+User for loop on list of coordinates Lists
+```
+for coordinates in [[52.250265,21.017909],[52.550265,21.117909]]:
+    fg.add_child(folium.Marker(location=coordinates, popup="Hi I am a Marker", icon=folium.Icon(color='green')))
+```
+
+### Lecture 78 - Adding Markers from Data Files
+
+`code`
+
+Import data using `pandas` library
+
+Iterate over markers location using loaded data
+```
+for lt, ln in zip(lat, lon):
+    fg.add_child(folium.Marker(location=[lt, ln], popup="Hi I am a Marker", icon=folium.Icon(color='green')))
+```
+
+### Lecture 79 - Creating Popup Windows for Map Features
+
+`code`
+
+Apply for loop on popup parameter
+```
+for lt, ln, el in zip(lat, lon, elev):
+    fg.add_child(folium.Marker(location=[lt, ln], popup=str(el)+ " m", icon=folium.Icon(color='green')))
+
+```
+
+### Lecture 80 - Color-Based Point Markers
