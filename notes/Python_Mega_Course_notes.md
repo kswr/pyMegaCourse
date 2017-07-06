@@ -1010,3 +1010,17 @@ fg.add_child(folium.GeoJson(data=(open('../input/Lecture_84_data/world.json', 'r
 ### Lecture 86 - Color-Based Polygon Features
 
 `code`
+
+`lambda` function allows user to write single-line, simple functions, e.g.
+
+```
+l = lambda x: x**2
+l(5)
+```
+
+To set color of the polygon based on it's value, use `lambda` in `folium.GeoJason` `style_function` parameter
+
+```
+fg.add_child(folium.GeoJson(data=open('../input/Lecture_84_data/world.json', 'r', encoding='utf-8-sig'), style_function=lambda x: {'fillColor':'green' if x ['properties']['POP2005']<10000000 else 'orange' if 10000000 <= x['properties']['POP2005'] < 20000000 else 'red'}))
+```
+### Lecture 87 - Adding a Layer Control Panel
